@@ -1,2 +1,3 @@
-# ATMS-597-SP-2020-Project-1
-Project 1 for ATMS 597 SP 2020.
+# ATMS-597-SP-2020
+
+This is the repository for ATMS 597 SN Weather and Climate Data Science.
