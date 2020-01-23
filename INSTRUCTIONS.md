@@ -9,7 +9,7 @@ Create an object-oriented python module that converts temperatures interchangeab
 
 Functionality Requirements:
 * The code must be object-oriented (i.e. be method-based), and may or may not require keywords.
-	i.e.,  tempconvert.dosomething(input)
+	i.e.,  `tempconvert.dosomething(input)`
 * The code must work on lists and numpy arrays as input, and return the same numerical type.
 * You can develop the code using Colab Notebooks, or any other way, but the repository should be submitted to GitHub as a python script (i.e., .py, not a notebook!), and include a descriptive README.md.
 
