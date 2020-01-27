@@ -33,7 +33,7 @@ class tempconvert:
         **Example:**
         
         If in_temp is a numpy ndarray or a list:
-            import tempconvert
+            from tempconvert import tempconvert
             temperature = tempconvert(in_temp)
 
         """
@@ -60,6 +60,7 @@ class tempconvert:
         **Example:**
         
         If in_temp is in degrees Celcius:
+            from tempconvert import tempconvert
             output = tempconvert(in_temp).C2F()
 
         """
@@ -82,6 +83,7 @@ class tempconvert:
         **Example:**
         
         If in_temp is in degrees Fahrenheit:
+            from tempconvert import tempconvert
             output = tempconvert(in_temp).F2C()
 
         """
@@ -104,6 +106,7 @@ class tempconvert:
         **Example:**
         
         If in_temp is in degrees Celcius:
+            from tempconvert import tempconvert
             output = tempconvert(in_temp).C2K()
 
         """
@@ -126,6 +129,7 @@ class tempconvert:
         **Example:**
         
         If in_temp is in degrees Kelvin:
+            from tempconvert import tempconvert
             output = tempconvert(in_temp).K2C()
 
         """
@@ -148,6 +152,7 @@ class tempconvert:
         **Example:**
         
         If in_temp is in degrees Fahrenheit:
+            from tempconvert import tempconvert
             output = tempconvert(in_temp).F2K()
 
         """
@@ -170,6 +175,7 @@ class tempconvert:
         **Example:**
         
         If in_temp is in degrees Kelvin:
+            from tempconvert import tempconvert
             output = tempconvert(in_temp).K2F()
 
         """
