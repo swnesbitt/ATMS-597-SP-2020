@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[44]:
-
-
 import numpy as np
 
 class tempConvert:
@@ -118,72 +112,21 @@ class tempConvert:
             self.temp = np.asarray(templist)
     
 
-
-# In[73]:
-
-
 #testing
-temp1 = [30,35,50,70]
-temp2 = np.array([200,300,400,500])
-
-
-# In[74]:
-
+temp1 = [30, 35, 50, 70]
+temp2 = np.array([200, 300, 400, 500])
 
 test1 = tempConvert(temp1)
 test2 = tempConvert(temp2)
 
-
-# In[75]:
-
-
 test1.temp
-
-
-# In[76]:
-
-
 test2.temp
 
-
-# In[77]:
-
-
 test1.dtype
-
-
-# In[78]:
-
-
 test2.dtype
 
-
-# In[79]:
-
-
 test1.CtoF()
-
-
-# In[80]:
-
-
 print(test1.temp)
 
-
-# In[81]:
-
-
 test2.KtoF()
-
-
-# In[82]:
-
-
 print(test2.temp)
-
-
-# In[ ]:
-
-
-
-
