@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-import numpy as np
-
-
-# In[36]:
-
-
 class tempConvert:
     "A class to convert temperatures between Celsius, Fahrenheit, and Kelvin"
     
@@ -72,26 +60,3 @@ class tempConvert:
             templist.append(round(((i + 273.15) * (9./5.) + 32.), 2))
             
         return templist
-    
-
-
-# In[40]:
-
-
-temps = [15.,20.,25.,30.,40.]
-
-f = tempConvert.FtoC(temps)
-
-
-# In[38]:
-
-
-f
-
-
-# In[39]:
-
-
-g = tempConvert.KtoC(temps)
-g
-
