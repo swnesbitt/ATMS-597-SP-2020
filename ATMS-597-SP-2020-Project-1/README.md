@@ -11,6 +11,7 @@ This project provides an object-oriented python module that converts temperature
 
 ## Authors and acknowledgment
 Group D: Chu-Chun Chen, Michael Sessa, Yang Lu
+
 The code was originally forked from the repository swnesbitt/ATMS-597-SP-2020 by Chu-Chun Chen.
 
 ## License
