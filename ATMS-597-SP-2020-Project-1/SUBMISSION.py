@@ -3,7 +3,7 @@ import numpy as np
 class MrT:
 
   """
-  Authors: Randy J. Chase ... 
+  Authors: Randy J. Chase, David Laferty and Alex Adams 
   
   MrT is a temperature conversion module. It can convert to any of the 4 major
   temperature units (F,C,K and R). 
@@ -20,6 +20,7 @@ class MrT:
     self.datatype = type(self.data)
 
   def toC(self):
+    """ Convert self.data to Celcius """
     #if data are a list, convert to an array. if not, leave it alone
     if self.datatype == list:
       self.data = np.asarray(self.data,dtype=float)
@@ -43,6 +44,8 @@ class MrT:
         self.data = list(self.data)
 
   def toF(self):
+    """ Convert self.data to Fahrenheit """
+    
     #if data are a list, convert to an array. if not, leave it alone
     if self.datatype == list:
       self.data = np.asarray(self.data,dtype=float)
@@ -67,6 +70,8 @@ class MrT:
 
 
   def toK(self):
+    """ Convert self.data to Kelvin """
+    
     #if data are a list, convert to an array. if not, leave it alone
     if self.datatype == list:
       self.data = np.asarray(self.data,dtype=float)
@@ -91,6 +96,8 @@ class MrT:
 
 
   def toR(self):
+    """ Convert self.data to Rankine"""
+    
     #if data are a list, convert to an array. if not, leave it alone
     if self.datatype == list:
       self.data = np.asarray(self.data,dtype=float)
