@@ -12,33 +12,37 @@ Task: Create an object-oriented python module that converts temperatures interch
 # Temperature conversions including C2F, C2K, F2C, F2K, K2C, K2F.
 import numpy as np
 
-class tempconvert:
+class tempconvert_class:
     """A method to convert temperatures between
     degrees Celcius, degrees Fahrenheit, and Kelvin"""
 
     # Convert a user provided temperature from Celcius to Fahrenheit.
-    def C2F(temp_c):
+    def C2F(self, temp_c):
       return (np.array(temp_c)*1.8+32).astype(np.array(temp_c).dtype)
 
     # Convert a user provided temperature from Celcius to Kelvin.
-    def C2K(temp_c):
+    def C2K(self, temp_c):
       return (np.array(temp_c)+273.15).astype(np.array(temp_c).dtype)
 
     # Convert a user provided temperature from Fahrenheit to Celcius.
-    def F2C(temp_f):
+    def F2C(self, temp_f):
       return ((np.array(temp_f)-32)/1.8).astype(np.array(temp_f).dtype)
 
     # Convert a user provided temperature from Fahrenheit to Kelvin.
-    def F2K(temp_f):
+    def F2K(self, temp_f):
       return ((np.array(temp_f)-32)/1.8+273.15).astype(np.array(temp_f).dtype)
 
     # Convert a user provided temperature from Kelvin to Celcius.
-    def K2C(temp_k):
+    def K2C(self, temp_k):
       return (np.array(temp_k)-273.15).astype(np.array(temp_k).dtype)
 
     # Convert a user provided temperature from kelvin to Fahrenheit.
-    def K2F(temp_k):
+    def K2F(self, temp_k):
       return ((np.array(temp_k)-273.15)*1.8+32).astype(np.array(temp_k).dtype)
+
+tempconvert = tempconvert_class()
+tempconvert.C2F  # bound method
+tempconvert.C2F([10, 20, 30])
 
 # Checking the functions
 a_int = [10, 20, 30]
