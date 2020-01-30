@@ -74,7 +74,7 @@ class MrT:
       print('ERROR: data type is a string. This is not supported')
 
     if self.unit == 'F':
-      self.data = ((self.data - 32) * (5/9.)) + 273
+      self.data = ((self.data - 32) * (5/9.)) + 273.15
     elif self.unit == 'K':
       print('WARNING: unit was already K, nothing was done')
     elif self.unit =='R':
