@@ -2,7 +2,7 @@
 Project 1 for ATMS 597 SP 2020.
 
 ## Description 
-This project provides an object-oriented python module that converts temperatures interchangeably between degrees Celsius, Fahrenheit, and Kelvin.
+This project provides an object-oriented python module that converts temperatures interchangeably between degrees Celcius, Fahrenheit, and Kelvin.
 
 ## Usage
 *  Choose the proper function for the temperature conversion. For instance, if the user wants to convert Celcius to Kelvin, the user should use tempconvert.C2K.
