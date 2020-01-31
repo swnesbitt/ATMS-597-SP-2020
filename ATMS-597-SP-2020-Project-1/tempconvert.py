@@ -11,19 +11,21 @@ class tempconvert():
     Celsius, Fahrenheit, and Kelvin.
     '''
 
-    def __init__(self, temp, regularized=True):
+    def __init__(self, temp, regularized=True, unit=None):
         # Record the type and data type of temperatures
         self.type = type(temp)
         self.dtype = type(temp[0])
         self.temp = np.array(temp)
         # With the constraint of absolute zero as default
         self.regularized = regularized
+        self.unit = unit
 
     # Convert Celsius to Fahrenheit
     def C2F(self):
         self.temp = self.temp*1.8 + 32.
         if self.regularized:
             self.temp = np.clip(self.temp, -459.67, None)
+        self.unit = "Fahrenheit"
         return self.output()
 
     # Convert Fahrenheit to Celsius
@@ -31,6 +33,7 @@ class tempconvert():
         self.temp = (self.temp - 32.)/1.8
         if self.regularized:
             self.temp = np.clip(self.temp, -273.15, None)
+        self.unit = "Celsius"
         return self.output()
 
     # Convert Celsius to Kelvin
@@ -38,6 +41,7 @@ class tempconvert():
         self.temp = self.temp + 273.15
         if self.regularized:
             self.temp = np.clip(self.temp, 0., None)
+        self.unit = "Kelvin"
         return self.output()
 
     # Convert Kelvin to Celsius
@@ -45,6 +49,7 @@ class tempconvert():
         self.temp = self.temp - 273.15
         if self.regularized:
             self.temp = np.clip(self.temp, -273.15, None)
+        self.unit = "Celsius"
         return self.output()
 
     # Convert Fahrenheit to Kelvin
