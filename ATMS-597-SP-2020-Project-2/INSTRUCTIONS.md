@@ -11,6 +11,7 @@ Here is an example of one vision of the code functionality, without labels:
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/20190705_Warming_stripes_BEHIND_line_graph_-_Berkeley_Earth_%28world%29.png/2560px-20190705_Warming_stripes_BEHIND_line_graph_-_Berkeley_Earth_%28world%29.png">
 By <a href="//commons.wikimedia.org/wiki/User:RCraig09" title="User:RCraig09">RCraig09</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=80170965">Link</a>
 
+Some of the functionality of this assignment can be adapted from the following repository that accompanies the text [Hands on Data Analysis with Pandas](https://github.com/stefmolin/Hands-On-Data-Analysis-with-Pandas/tree/master/ch_04) by Stefanie Moline.
 
 Functionality Requirements:
 * The code must be called with a GHCN site id, a date range, a flag whether to plot the data over the stripes, and a time period to average over for each stripe (i.e. annual, monthly, weekly, etc.).  The code should download the data automatically from NCEI using the [API version 2](https://www.ncdc.noaa.gov/cdo-web/webservices/v2) and use `pandas` for the data reduction, and `matplotlib` to plot the visualization.
