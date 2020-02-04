@@ -7,7 +7,8 @@ You will work in groups of 3 to complete this assignment, which are assigned on 
 Task:
 Create code using python `pandas` to organize and reduce climate data.  You will gain experience using an API call to a data server at the National Centers for Environmental Information (NCEI) to produce a visualization of so-called *climate stripes*, created by [Ed Hawkins at the University of Reading](https://showyourstripes.info/).  Our version of climate stripes will optionally add a quantitative plot over top of the plot so you can actually see the values of temperature, precipitation, or carbon dioxide concentration.  This new version will add axes and a line graph showing the time and value axes on the x- and y-axes, respectively.
 
-<img src="https://en.wikipedia.org/wiki/Warming_stripes#/media/File:20190705_Warming_stripes_BEHIND_line_graph_-_Berkeley_Earth_(world).png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/20190705_Warming_stripes_BEHIND_line_graph_-_Berkeley_Earth_%28world%29.png/2560px-20190705_Warming_stripes_BEHIND_line_graph_-_Berkeley_Earth_%28world%29.png">
+By <a href="//commons.wikimedia.org/wiki/User:RCraig09" title="User:RCraig09">RCraig09</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=80170965">Link</a>
 
 Functionality Requirements:
 * The code must be called with a GHCN site id, a date range, a flag whether to plot the data over the stripes, and a time period to average over for each stripe (i.e. annual, monthly, weekly, etc.).  The code should download the data automatically from NCEI using the [API version 2](https://www.ncdc.noaa.gov/cdo-web/webservices/v2) and use `pandas` for the data reduction, and `matplotlib` to plot the visualization.
