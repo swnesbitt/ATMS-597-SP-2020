@@ -5,10 +5,12 @@
 You will work in groups of 3 to complete this assignment, which are assigned on Learn@Illinois.  Students who are not taking the course for credit may join to form their own groups, however their assignment will not be graded.
 
 Task:
-Create code using python `pandas` to organize and reduce climate data.  You will gain experience using an API call to a data server at the National Centers for Environmental Information (NCEI) to produce a visualization of so-called *climate stripes*, created by [Ed Hawkins at the University of Reading](https://showyourstripes.info/).  Our version of climate stripes will add a quantitative plot over top of the plot so you can actually see the values of temperature, precipitation, or carbon dioxide concentration.  This new version will add axes and a line graph showing the time and value axes on the x- and y-axes, respectively.
+Create code using python `pandas` to organize and reduce climate data.  You will gain experience using an API call to a data server at the National Centers for Environmental Information (NCEI) to produce a visualization of so-called *climate stripes*, created by [Ed Hawkins at the University of Reading](https://showyourstripes.info/).  Our version of climate stripes will optionally add a quantitative plot over top of the plot so you can actually see the values of temperature, precipitation, or carbon dioxide concentration.  This new version will add axes and a line graph showing the time and value axes on the x- and y-axes, respectively.
+
+<img src="https://en.wikipedia.org/wiki/Warming_stripes#/media/File:20190705_Warming_stripes_BEHIND_line_graph_-_Berkeley_Earth_(world).png">
 
 Functionality Requirements:
-* The code must be called with a GHCN site id, a date range, and a time period to average over, and download the data automatically from NCEI using the [API version 2](https://www.ncdc.noaa.gov/cdo-web/webservices/v2).
+* The code must be called with a GHCN site id, a date range, a flag whether to plot the data over the stripes, and a time period to average over for each stripe (i.e. annual, monthly, weekly, etc.).  The code should download the data automatically from NCEI using the [API version 2](https://www.ncdc.noaa.gov/cdo-web/webservices/v2) and use `pandas` for the data reduction, and `matplotlib` to plot the visualization.
 * You can develop the code using Colab Notebooks, or any other way, but the repository should be submitted to GitHub as a python script (i.e., .py, not a notebook!), and include a descriptive README.md.
 
 Code demo presentation: Each group will have a 5 minute live code demo on 13 February.  The code demo should also discuss the group's code structure, challenges and solutions, and other 
