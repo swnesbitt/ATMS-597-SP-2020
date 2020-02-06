@@ -25,7 +25,7 @@ Formatting and Documentation Requirements:
 * The code must be formatted in PEP8.
 
 GitHub usage requirements:
-* The code must be originally forked from the repository [swnesbitt/ATMS-597-SP-2020](https://github.com/swnesbitt/ATMS-597-SP-2020/) by a group member.
+* The code must be originally forked from the repository [swnesbitt/ATMS-597-SP-2020](https://github.com/swnesbitt/ATMS-597-SP-2020/) by a group member *or* you can create a new repository.
 * The code must be submitted as a link to a GitHub repository in Learn@Illinois by the end of the day on the due date.  
 * Each project member must have contributed to the code at least once either through branching or through forking, making a commit, with acceptance of a pull request.
 
