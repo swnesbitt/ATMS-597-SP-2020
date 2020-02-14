@@ -7,7 +7,7 @@ import matplotlib.pylab as plt
 
 class ClimateStripy:
   """ 
-  Authors: Randy J. Chase, Itinderjot Singh, ENTER YOUR NAME HERE
+  Authors: Randy J. Chase, ENTER YOUR NAME HERE, ENTER YOUR NAME HERE
 
   Welcome to ClimateStripy! This class is designed to help users create their 
   own "Climate Stripes". See this page for the original idea: 
@@ -186,109 +186,3 @@ class ClimateStripy:
       ax.plot(self.reference_point[1],self.reference_point[0],'*k',ms=15,markerfacecolor='w',markeredgewidth=2,zorder=10,label='Reference_point')
       ax.plot(self.station.longitude,self.station.latitude,'sk',ms=10,markerfacecolor='w',markeredgewidth=2,label='Closest_Station')
       ax.legend()
-      
-      def fetch(self):
-    """ This method invokes the other method to grab data from the archive"""
-
-    years =  (self.station.maxdate - self.station.mindate).total_seconds()/3.154e+7
-    years = np.arange(0,np.round(years,0))
-    #to debug, let just do 10 years. 
-    # years = np.arange(0,10)
-
-    self.years = years
-    self.mindate = self.station.mindate
-    self.maxdate = self.station.maxdate
-    self.TMIN = None
-    self.TMAX = None
-    self.kill_flag = False
-    self.current = str(self.mindate)
-    from tqdm import tqdm
-    for i in tqdm(range(len(years))):
-        self.fetch_inside()
-    
-  def fetch_inside(self):
-    """ This method grabs the data for some year and some station"""
-    station_id = self.station.id
-    year = self.current[0:4]
-    #make the api call
-    r = requests.get('https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&datatypeid=TMIN&datatypeid=TMAX&limit=1000&stationid='+station_id+'&startdate='+year+'-01-01&enddate='+year+'-12-31', headers={'token':self.token})
-    #if its empty go to the next year. 
-    if len(list(r)) <= 1:
-      pass
-    else:
-      df = pd.DataFrame(r.json()['results'])
-      tmax = df.where(df.datatype=='TMAX').dropna(how='all')
-      tmin = df.where(df.datatype=='TMIN').dropna(how='all')
-      if self.TMIN is None:
-        self.TMIN = tmin
-        self.TMAX = tmax 
-      else:
-        self.TMIN = self.TMIN.append(tmin)
-        self.TMAX = self.TMAX.append(tmax)
-
-    self.current = str(np.asarray(self.current,dtype=np.datetime64) +np.timedelta64(365,'D'))
-
-  def clean_df(self):
-    """ This just cleans up the data a bit """
-    series_tmin = pd.Series(self.TMIN.value.values/10, index=pd.DatetimeIndex(self.TMIN.date.astype(np.datetime64)))
-    series_tmax = pd.Series(self.TMAX.value.values/10, index=pd.DatetimeIndex(self.TMAX.date.astype(np.datetime64)))
-
-    # series_tmin = series_tmin.where(series_tmin < 100)
-    # series_tmax = series_tmax.where(series_tmax < 100)
-
-    self.TMIN = series_tmin
-    self.TMAX = series_tmax
-
-    idx = pd.date_range(str(self.station.mindate)[0:4]+'-01-01',str(self.station.maxdate)[0:4]+'-12-31')
-    self.TMIN = self.TMIN.reindex(idx, fill_value=np.nan)
-    self.TMAX = self.TMAX.reindex(idx, fill_value=np.nan)
-
-  def test_data_avail(self):
-    """ Double check to see if there is enough data in the 1970 - 2000 time 
-    frame to calc anom """
-    chunk = self.TMIN[slice('1971-01-01','2000-12-31')].values.shape[0]
-    chunk = chunk/(30*365)
-    if chunk < 0.8:
-      print('ERROR: Data needed for anomaly calculation is too low (<80% there) Please select a different station from self.')
-    else:
-      print('Data are fine')
-
-  def get_monthly_anom(self):
-    count_tmin = self.TMIN.groupby(by=[CS.TMIN.index.year,CS.TMIN.index.month]).count()
-    count_tmax = self.TMAX.groupby(by=[CS.TMAX.index.year,CS.TMAX.index.month]).count()
-
-    #resample native daily to monthly 
-    self.TMIN_MO = self.TMIN.resample('MS').mean()
-    self.TMAX_MO = self.TMAX.resample('MS').mean()
-    #get baseline for anomaly calc. 
-    self.TMIN_mo = self.TMIN_MO[slice('1971-01-01','2000-12-31')]
-    TMIN_baseline =self.TMIN_mo.groupby(by=self.TMIN_mo.index.month).mean()
-    TMIN_std = self.TMIN_mo.groupby(by=self.TMIN_mo.index.month).std()
-    self.TMIN_MO_anom = self.TMIN_MO.groupby(by=self.TMIN_MO.index.year).apply(calc_anom(TMIN_baseline,TMIN_std))
-    self.TMIN_MO_anom = self.TMIN_MO_anom.where(count_tmin.values > (0.8*30)) #make sure 80% of the days are in that month to count 
-
-    self.TMAX_mo = self.TMAX_MO[slice('1971-01-01','2000-12-31')]
-    TMAX_baseline =self.TMAX_mo.groupby(by=self.TMAX_mo.index.month).mean()
-    TMAX_std = self.TMAX_mo.groupby(by=self.TMAX_mo.index.month).std()
-    self.TMAX_MO_anom = self.TMAX_MO.groupby(by=self.TMAX_MO.index.year).apply(calc_anom(TMAX_baseline,TMAX_std))
-    self.TMAX_MO_anom = self.TMAX_MO_anom.where(count_tmax.values > (0.8*30)) #make sure 80% of the days are in that month to count 
-
-  def get_yearly_anom(self):
-    count_tmin = self.TMIN.groupby(by=[CS.TMIN.index.year]).count()
-    count_tmax = self.TMAX.groupby(by=[CS.TMAX.index.year]).count()
-    #resample native daily to monthly 
-    self.TMIN_YR = self.TMIN.resample('YS').mean()
-    self.TMAX_YR = self.TMAX.resample('YS').mean()
-    #get baseline for anomaly calc. 
-    self.TMIN_yr = self.TMIN_YR[slice('1971-01-01','2000-12-31')]
-    TMIN_baseline =self.TMIN_yr.groupby(by=self.TMIN_yr.index.month).mean()
-    TMIN_std = self.TMIN_yr.groupby(by=self.TMIN_yr.index.month).std()
-    self.TMIN_YR_anom = self.TMIN_YR.groupby(by=self.TMIN_YR.index.year).apply(calc_anom(TMIN_baseline,TMIN_std))
-    self.TMIN_YR_anom = self.TMIN_YR_anom.where(count_tmin.values > (0.8*365)) #make sure 80% of the days are in that month to count 
-
-    self.TMAX_yr = self.TMAX_YR[slice('1971-01-01','2000-12-31')]
-    TMAX_baseline =self.TMAX_yr.groupby(by=self.TMAX_yr.index.month).mean()
-    TMAX_std = self.TMAX_yr.groupby(by=self.TMAX_yr.index.month).std()
-    self.TMAX_YR_anom = self.TMAX_YR.groupby(by=self.TMAX_YR.index.year).apply(calc_anom(TMAX_baseline,TMAX_std))
-    self.TMAX_YR_anom = self.TMAX_YR_anom.where(count_tmax.values > (0.8*365)) #make sure 80% of the days are in that month to count 
-
