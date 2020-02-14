@@ -186,3 +186,85 @@ class ClimateStripy:
       ax.plot(self.reference_point[1],self.reference_point[0],'*k',ms=15,markerfacecolor='w',markeredgewidth=2,zorder=10,label='Reference_point')
       ax.plot(self.station.longitude,self.station.latitude,'sk',ms=10,markerfacecolor='w',markeredgewidth=2,label='Closest_Station')
       ax.legend()
+
+  def draw_my_stripes(self,which='TMAX',method='Y',plot_val=True,savefig=False):
+    '''
+    This method takes the climate data time series and plot the stripes, optinally
+    adds a quantitative plot on top of the plot to show anomaly data, and optinally
+    saves the figure as a file.
+    
+    which: a 4-char string to specify data to plot. "TMIN" or "TMAX" supported now.
+    method: a 1-char flag to specify period to plot. "Y": annual; "M": monthly.
+      "W": weekly (not supported now and causes error)
+    plot_val: boolean to specify if quantatitive plot is shown.
+    savefig: boolean to specify if plot should be saved as a file.
+    '''
+    if method == 'Y':
+      if which=='TMAX':
+        anomaly = self.TMAX_YR_anom
+      else:
+        anomaly = self.TMIN_YR_anom
+    elif method =='M':
+      if which=='TMAX':
+        anomaly = self.TMAX_MO_anom
+      else:
+        anomaly = self.TMIN_MO_anom
+    elif method =='W':
+      print('Your request could not be met, please choose another method')
+
+    date = anomaly.index
+    first = mdates.date2num(date[0])
+    last = mdates.date2num(date[-1])
+    width = (last - first) / (date.size-1)
+    [lower, upper] = [anomaly.min() - 0.1, anomaly.max() + 0.1]
+
+    # initialize the plot
+    fig = plt.figure(figsize=(11, 1))
+    ax = fig.add_axes([0, 0, 1, 1])
+    # ax.set_axis_off()
+
+    # create a color map for stripes
+    cmap = ListedColormap([
+        '#08306b', '#08519c', '#2171b5', '#4292c6',
+        '#6baed6', '#9ecae1', '#c6dbef', '#deebf7',
+        '#fee0d2', '#fcbba1', '#fc9272', '#fb6a4a',
+        '#ef3b2c', '#cb181d', '#a50f15', '#67000d',])
+
+
+    patches = [Rectangle((date, lower), width, upper-lower) for date in np.arange(first, last + width,width)]
+    ind = np.where(~anomaly.isna())[0]
+    patches2 = []
+    for i in ind:
+      patches2.append(patches[i])
+
+    ind2 = np.where(anomaly.isna())[0]
+    patches3 = []
+    for i in ind2:
+      patches3.append(patches[i])
+
+    # create a collection with a rectangle for each year
+    col = PatchCollection(patches2)
+    col2 = PatchCollection(patches3,hatch='x',facecolor=[0.75,0.75,0.75],edgecolor='k',lw=0.25)
+    # set data, colormap and color limits
+    col.set_array(anomaly[ind])
+    col.set_cmap(cmap)
+    col.set_clim([-2.6,2.6])
+    ax.add_collection(col)
+    ax.add_collection(col2)
+
+    ax.set_ylim(lower, upper)
+    ax.set_xlim(first, last + width)
+
+    ax.set_title(self.station['name'])
+    if plot_val:
+        ax.plot(date, anomaly, markersize = 8, marker = 'o', linestyle = '--', markerfacecolor='w',color = 'k',path_effects=[path_effects.SimpleLineShadow(),
+                      path_effects.Normal()])
+    plt.show()
+    if savefig:
+        fig.savefig('climate-stripes.png')
+
+#function not a method
+def calc_anom(baseline,std):
+    def calc_anom_(x):
+        return (x-baseline.values)/std.values
+    return calc_anom_
