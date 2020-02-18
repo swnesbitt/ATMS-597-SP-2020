@@ -1,11 +1,11 @@
 # ATMS 597 SN Weather and Climate Data Science
-## Project 2: Pandas - Use for reducing data (version 1.0)
-### Due: 13 February at midnight to Learn@Illinois
+## Project 3: xarray - Use for reducing data (version 1.0)
+### Due: Friday, 28 February at midnight to Learn@Illinois
 
 You will work in groups of 3 to complete this assignment, which are assigned on Learn@Illinois.  Students who are not taking the course for credit may join to form their own groups, however their assignment will not be graded.
 
 Task:
-Create code using python `pandas` to organize and reduce climate data.
+Create code using python `xarray` to organize and reduce climate data.
 
 Functionality Requirements:
 * The code must be object-oriented (i.e. be method-based), and may or may not require keywords.
