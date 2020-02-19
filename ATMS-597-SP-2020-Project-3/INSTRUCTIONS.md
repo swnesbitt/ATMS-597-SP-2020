@@ -53,10 +53,10 @@ Functionality Requirements:
 * The code must use `xarray` for the data reduction, and `matplotlib` to plot the required visualizations.
 * You can develop the code using Colab Notebooks, or any other way, but the repository should be submitted to GitHub as a python script (i.e., .py, not a notebook!), and include a descriptive README.md.
 
-Code demo presentation: Each group will have a 5 minute live code demo on 13 February.  The code demo should also discuss the group's code structure, challenges and solutions, and other 
+Results presentation: Each group will have a 5 minute time to present code on Friday, 28 February.  The presentation should show the results using the figures described above in a slide presentation.
 
 Formatting and Documentation Requirements:
-* The appropriate references for the data, including DOI numbers, for the datasets used.  Also, appropriate references to the Climate Stripes creator/technique should be included.
+* The appropriate references for the data, including DOI numbers, for the datasets used.  
 * The code must contain docstrings and comments where appropriate.
 * The code must be formatted in PEP8.
 
