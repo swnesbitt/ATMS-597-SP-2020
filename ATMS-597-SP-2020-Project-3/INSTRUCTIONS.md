@@ -18,7 +18,7 @@ Create code using python `xarray` to organize and reduce climate data.  The goal
 
 (3) Using output from the NCEP Reanalysis [https://journals.ametsoc.org/doi/pdf/10.1175/1520-0477(1996)077%3C0437%3ATNYRP%3E2.0.CO%3B2](Kalnay et al. 1996), compute the global mean fields and seasonal anomaly fields for days meeting and exceeding the threshold of precipitation calculated in the previous step (using the 1981-2010 as a base period for anomalies) of 
 - 250 hPa wind vectors and wind speed, 
-- 500 hPa winds and geopotential height,
+- 500 hPa wind vectors and geopotential height,
 - 850 hPa temperature, specific humidity, and winds,
 - skin temperature, and surface winds, and
 - total atmospheric column water vapor.  
