@@ -20,7 +20,7 @@ Create code using python `xarray` to organize and reduce climate data.  The goal
 - 250 hPa wind vectors and wind speed, 
 - 500 hPa wind vectors and geopotential height,
 - 850 hPa temperature, specific humidity, and winds,
-- skin temperature, and surface winds, and
+- skin temperature, and surface wind vectors (sig995 level), and
 - total atmospheric column water vapor.  
 
 (4) Create maps showing the mean fields for the extreme precipitation day composites, long term mean composites for the selected months, and the anomaly fields for each variable.  Use contours and vectors when appropriate.
