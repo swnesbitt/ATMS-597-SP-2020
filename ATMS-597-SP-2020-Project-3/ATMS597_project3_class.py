@@ -1,25 +1,20 @@
-!pip install wget
-!pip install netCDF4
-
 from tqdm import tqdm
 import xarray as xr
 import numpy as np
 import wget
 import os 
-
-#import needed packages
 from bs4 import BeautifulSoup
 import re
 import urllib.request
 import pandas as pd
-#
+
 def download_par(item):
   ff=wget.download(item,'./raw_data/'+item[-40:])
   return
 
 class Rainy():
   """
-  A Class to do some precip analysis. 
+  A Class to analyze the Global Precipitation Climatology Project (https://www.esrl.noaa.gov/psd/data/gridded/data.gpcp.html). 
   """
 
   def __init__(self): 
@@ -27,11 +22,11 @@ class Rainy():
 
 
   def getLinks(self,BASE_URL=None,TIME1=None,TIME2=None,verbose=True,begin_month = 6,end_month = 8):
-
+    
     """
-    This method uses webscraping (and Beautiful soup) to grab the links. 
+    This method uses webscraping (and Beautiful soup) to grab the links for the precip data. 
     By default, it will create the links for 1996 to current. Also this defaults 
-    to NH summer. To change to different months change begin_month and end_month 
+    to NH summer. Currently any months greater than 10 are unsupported... 
     """
 
     if BASE_URL is None: 
@@ -65,15 +60,17 @@ class Rainy():
     self.links = links
 
   def download_links(self,parallel=True):
-
-    """ Download all files to the current directory"""
+    """ 
+    Download all files that are found in self.links, which should be created by the self.getLinks() method.
+    
+    If parallel is True it will do it in parallel with the number of cpus avail. for your machine. 
+    
+    """
     
     if os.path.isdir('./raw_data/') is False:
       os.mkdir('./raw_data/')
 
     if parallel:
-
-      
       import multiprocessing as mp
       n_cpu = mp.cpu_count()
       pool = mp.Pool(processes=n_cpu)
@@ -88,6 +85,10 @@ class Rainy():
     
   
   def get_loc(self,lon=None,lat=None,method='nearest'):
+    """ 
+    This will select the closest grid point to your lat lon of interest. If lat lon is None, it will default to Champaign,IL
+    """
+    
     if lon is None:
       lon = (360.-88.2434)
     if lat is None:
@@ -100,6 +101,7 @@ class Rainy():
     self.data = data_final
 
   def plot_cdf(self):
+    """ This makes the CDF plot to help visualize the distribution of data at your desired location""" 
 
     import matplotlib 
     import matplotlib.pylab as plt
@@ -115,7 +117,9 @@ class Rainy():
 
 
   def split_on_quantile(self,quantile=0.95):
-
+    """ 
+    This will split the data and save some files so you dont have to keep re-downloading things later on
+    """
     if os.path.isdir('./subset_data/') is False:
       os.mkdir('./subset_data/')
     percentile=self.data.quantile(q=quantile)
