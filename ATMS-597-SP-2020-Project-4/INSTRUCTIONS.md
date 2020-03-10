@@ -21,6 +21,7 @@ The following files are provided:
 `KCMI_daily_obs.csv` Daily extrema values (precip is often missing in these files), so use the file above to compute daily precip.  Contains maximum temperature, minimum temperature, and maximum wind speed (which are different than hourly observations)
 
 Tar files of the following:
+
 `daily.tar.gz` Files (in csv format) containing the GFS 12 UTC initialization forecasts (initialized at the date in the file name and csv index), with the GFS values of maximum temperature, minimum temperature, maximum winds speed and precipitation accumulation for the period 6 UTC to 6 UTC the following day.
 
 `sfc.tar.gz` Files (in csv format) containing the GFS 12 UTC initialization forecasts (initialized at the date in the file name and csv index), with the 3 hourly time series of surface forecast parameters from 0 to 72 hour forecast.
