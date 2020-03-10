@@ -1,7 +1,7 @@
 # ATMS 597 SP 2020
 ## Project 4 - Using regression for prediction (version 1.0)
 
-### Due Friday, March 26, and midnight
+### Due Friday, March 26, at midnight
 
 You will work in groups of 3 to complete this assignment, which are assigned on Learn@Illinois. Students who are not taking the course for credit may join to form their own groups, however their assignment will not be graded.
 
