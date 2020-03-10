@@ -1,5 +1,5 @@
 # ATMS 597 SP 2020
-## Project 3 - Using regression for prediction (version 1.0)
+## Project 4 - Using regression for prediction (version 1.0)
 
 ### Due Friday, March 26, and midnight
 
