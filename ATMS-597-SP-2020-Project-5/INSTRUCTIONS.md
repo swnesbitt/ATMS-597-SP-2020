@@ -1,7 +1,7 @@
 # ATMS 597 SP 2020
-## Project 4 - Using regression for prediction (version 1.0)
+## Project 5 - Classification (version 1.0)
 
-### Due Thursday, April 3, at midnight
+### Due Friday, April 24, at midnight
 
 You will work in groups of 3 to complete this assignment, which are assigned on Learn@Illinois. Students who are not taking the course for credit may join to form their own groups, however their assignment will not be graded.
 
@@ -26,5 +26,7 @@ Group G: KBJI (Bemidji, MN)
 Group H: KRST (Rochester, MN)
 
 The group with the improvement of values of Briar Skill Score for their Model 2 over the baseline SVM model will be given a prize.
+
+Course presentations will be Thursday, April 23.
 
 Good luck!
