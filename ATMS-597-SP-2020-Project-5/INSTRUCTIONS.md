@@ -8,7 +8,8 @@ You will work in groups of 3 to complete this assignment, which are assigned on 
 Tasks: Use supervised classification techniques to predict frozen vs. liquid precipitation type (i.e., when it is *not* raining, so rain and freezing rain vs. other categories such as snow, sleet, etc.) at the surface in ASOS weather observations.
 
 Model 1: Support Vector Machine classification with default values (baseline)
-Model 2: Your pick!
+
+Model 2: Your pick of anything in `sklearn`!
 
 Data: You will use 5-minute Automated Surface Observation System data available from NCDC (ftp://ftp.ncdc.noaa.gov/pub/data/asos-fivemin/).  Data from 2000-2020 is available.  Use a 70-30 random split to perform training and validation.
 
