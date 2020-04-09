@@ -7,7 +7,13 @@ You will work in groups of 3 to complete this assignment, which are assigned on 
 
 Tasks: Use supervised classification techniques to predict frozen vs. liquid precipitation type (i.e., when it is *not* raining, so rain and freezing rain vs. other categories such as snow, sleet, etc.) at the surface in ASOS weather observations.
 
-Model 1: Support Vector Machine classification with default values (baseline)
+Model 1: Logistic Regression classification with default values (baseline)
+
+```
+>>> from sklearn.linear_model import LogisticRegression
+...
+>>> clf = LogisticRegression(random_state=0).fit(X, y)
+```
 
 Model 2: Your pick!
 
@@ -28,6 +34,6 @@ Group H: KRST (Rochester, MN)
 
 The group with the improvement of values of Briar Skill Score for their Model 2 over the baseline SVM model will be given a prize.
 
-Course presentations will be Thursday, April 23.
+Course presentations will be Thursday, April 23.  A colab notebook or jupyter notebook can be submitted for the assignment.
 
 Good luck!
