@@ -32,7 +32,7 @@ Group F: KMKG (Muskegon, MI)
 Group G: KBJI (Bemidji, MN)
 Group H: KRST (Rochester, MN)
 
-The group with the improvement of values of Briar Skill Score for their Model 2 over the baseline SVM model will be given a prize.
+The group with the improvement of values of Briar Skill Score for their Model 2 over the baseline logistic regression model will be given a prize.
 
 Course presentations will be Thursday, April 23.  A colab notebook or jupyter notebook can be submitted for the assignment.
 
